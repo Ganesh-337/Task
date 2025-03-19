@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Development Learning Path</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Home Page -->
+  <div id="homePage">
+    <nav>
+      <p class="logo">Web Dev Journey</p>
+      <ul class="nav-links">
+        <li>
+          <button data-nav="login">Login</button>
+        </li>
+        <li>
+          <button data-nav="register">Register</button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="hero">
+      <h1>Welcome to Web Dev Journey</h1>
+      <p>Start your journey to becoming a full-stack developer</p>
+      <button data-nav="login" class="cta-button">Get Started</button>
+    </section>
+  </div>
+
+  <!-- Login Form -->
+  <div id="loginPage" class="hidden">
+    <nav>
+      <p class="logo">Web Dev Journey</p>
+    </nav>
+    <div class="container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email:</label>
+          <input type="email" id="loginEmail" name="loginEmail" required />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password:</label>
+          <input type="password" id="loginPassword" name="loginPassword" required />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+      <p class="error-message" id="loginErrorMessage"></p>
+      <p class="form-footer">
+        Don't have an account?
+        <button data-nav="register" class="link-button">Register here</button>
+      </p>
+      <button data-nav="home" class="secondary-button">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- Registration Form -->
+  <div id="registerPage" class="hidden">
+    <nav>
+      <p class="logo">Web Dev Journey</p>
+    </nav>
+    <div class="container">
+      <h2>Register</h2>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="registerUsername">Username:</label>
+          <input type="text" id="registerUsername" name="registerUsername" required />
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Email:</label>
+          <input type="email" id="registerEmail" name="registerEmail" required />
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Password:</label>
+          <input type="password" id="registerPassword" name="registerPassword" required />
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required />
+        </div>
+        <button type="submit">Register</button>
+      </form>
+      <p class="error-message" id="registerErrorMessage"></p>
+      <p class="form-footer">
+        Already have an account?
+        <button data-nav="login" class="link-button">Login here</button>
+      </p>
+      <button data-nav="home" class="secondary-button">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- Learning Path (Landing Page) -->
+  <div id="landingPage" class="hidden">
+    <!-- Side Menu -->
+    <div id="sideMenu" class="side-menu">
+      <div class="menu-header">
+        <div class="user-profile">
+          <div class="profile-info">
+            <div class="profile-name" id="profileName"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-search">
+        <div class="search-icon">🔍</div>
+        <input type="text" placeholder="Search menu items...">
+      </div>
+
+      <div class="menu-content">
+        <div class="menu-item" data-section="ai">
+          <div class="item-icon">🤖</div>
+          <span>Ask AI</span>
+        </div>
+
+        <div class="menu-item active" data-section="home">
+          <div class="item-icon">🏠</div>
+          <span>Home</span>
+        </div>
+
+        <div class="menu-section">
+          <h3>Learning Path</h3>
+          <div class="menu-item" data-section="basics">
+            <div class="item-icon">📚</div>
+            <span>Web Basics</span>
+          </div>
+          <div class="menu-item" data-section="frontend">
+            <div class="item-icon">🎨</div>
+            <span>Frontend Development</span>
+          </div>
+          <div class="menu-item" data-section="backend">
+            <div class="item-icon">⚙️</div>
+            <span>Backend Development</span>
+          </div>
+        </div>
+
+        <div class="menu-section">
+          <h3>Resources</h3>
+          <div class="menu-item" data-section="tutorials">
+            <div class="item-icon">📖</div>
+            <span>Tutorials</span>
+          </div>
+          <div class="menu-item" data-section="projects">
+            <div class="item-icon">🚀</div>
+            <span>Projects</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-footer">
+        <div class="menu-item" data-section="settings">
+          <div class="item-icon">⚙️</div>
+          <span>Settings</span>
+        </div>
+        <div class="menu-item" data-section="help">
+          <div class="item-icon">❓</div>
+          <span>Help</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <!-- Top Navigation -->
+      <nav class="top-nav">
+        <button id="menuToggle" class="menu-toggle">☰</button>
+        <p class="logo">Web Dev Journey</p>
+        <ul class="nav-links">
+          <li><span id="userWelcome">Welcome!</span></li>
+          <li><button data-nav="logout">Logout</button></li>
+        </ul>
+      </nav>
+
+      <!-- Content Container -->
+      <div class="content-container">
+        <!-- AI Search Section -->
+        <div class="search-section">
+          <div class="search-container">
+            <input type="text" id="aiSearch" placeholder="Ask anything about web development...">
+            <button onclick="handleSearch()" class="search-button">Search</button>
+          </div>
+          <div id="searchResult" class="search-result">
+            <div id="initialMessage" class="initial-message">
+              <p>Your query result area</p>
+            </div>
+            <div id="loadingIndicator" class="loading hidden">
+              <div class="spinner"></div>
+              <p>Generating response...</p>
+            </div>
+            <div id="resultContent" class="result-content hidden">
+              <h3>Your result</h3>
+              <div id="resultText"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Learning Path Section -->
+        <div class="learning-path-container">
+          <h2 class="section-title">Your Learning Journey</h2>
+          <div class="path-content">
+            <div class="path-node start">
+              <div class="node-content">
+                <h3>Start Your Web Dev Journey</h3>
+              </div>
+            </div>
+
+            <div class="path-split">
+              <div class="path-node">
+                <div class="node-content">
+                  <h3>HTML & CSS Basics</h3>
+                  <p>Learn the fundamentals of web structure and styling</p>
+                </div>
+              </div>
+
+              <div class="path-node">
+                <div class="node-content">
+                  <h3>JavaScript Fundamentals</h3>
+                  <p>Master the basics of programming with JavaScript</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="path-node">
+              <div class="node-content">
+                <h3>Git & Version Control</h3>
+                <p>Learn to manage your code effectively</p>
+              </div>
+            </div>
+
+            <div class="path-node">
+              <div class="node-content">
+                <h3>React Basics</h3>
+                <p>Start building modern web applications</p>
+              </div>
+            </div>
+
+            <div class="path-split">
+              <div class="path-node">
+                <div class="node-content">
+                  <h3>State Management</h3>
+                  <p>(e.g., Redux)</p>
+                </div>
+              </div>
+
+              <div class="path-node">
+                <div class="node-content">
+                  <h3>React Hooks &</h3>
+                  <p>Advanced Concepts</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="path-node">
+              <div class="node-content">
+                <h3>Next.js & Server-Side</h3>
+                <p>Rendering</p>
+              </div>
+            </div>
+
+            <div class="path-node end">
+              <div class="node-content">
+                <h3>Build Full-Stack React</h3>
+                <p>Apps</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="supabase-config.js"></script>
+  <script type="module" src="app.js"></script>
+  <script type="module" src="path.js"></script>
+  <script type="module" src="ai-search.js"></script>
+</body>
+
+</html>
